@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic Setup -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/download.svg" />
+    <link rel="apple-touch-icon" href="/download.svg" />
+
+    <!-- Website Title -->
+    <title>Laundry Near | Premium Laundry Pickup & Delivery</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Laundry Near is a premium laundry pickup and delivery platform connecting customers with trusted nearby laundry shops."
+    />
+
+    <meta
+      name="keywords"
+      content="laundry near me, laundry pickup, laundry delivery, dry cleaning, ironing service, laundry shop, premium laundry service"
+    />
+
+    <meta name="author" content="Laundry Near" />
+
+    <!-- Browser Theme Color -->
+    <meta name="theme-color" content="#F5F1EB" />
+    <meta name="msapplication-TileColor" content="#F5F1EB" />
+
+    <!-- Open Graph Preview -->
+    <meta property="og:title" content="Laundry Near | Premium Laundry Pickup & Delivery" />
+    <meta
+      property="og:description"
+      content="Book laundry pickup, track orders, and connect with trusted laundry shops near you."
+    />
+    <meta property="og:image" content="/download.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Laundry Near" />
+
+    <!-- Twitter / Social Preview -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Laundry Near | Premium Laundry Pickup & Delivery" />
+    <meta
+      name="twitter:description"
+      content="Premium laundry pickup and delivery from trusted shops near you."
+    />
+    <meta name="twitter:image" content="/download.svg" />
+
+    <!-- Premium Base Styling -->
+    <style>
+      :root {
+        --cream: #f5f1eb;
+        --cream-dark: #e8dfd2;
+        --black: #141414;
+        --brown: #6b4f3b;
+        --gold: #b58b5f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--cream);
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(181, 139, 95, 0.18), transparent 35%),
+          radial-gradient(circle at bottom right, rgba(20, 20, 20, 0.08), transparent 35%),
+          linear-gradient(135deg, var(--cream), var(--cream-dark));
+        color: var(--black);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(20, 20, 20, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(20, 20, 20, 0.025) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 75%);
+        z-index: 0;
+      }
+
+      #root {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+      }
+
+      ::selection {
+        background-color: var(--black);
+        color: var(--cream);
+      }
+
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--cream);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(var(--brown), var(--gold));
+        border-radius: 999px;
+        border: 2px solid var(--cream);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--black);
+      }
+
+      .no-script-box {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .no-script-card {
+        max-width: 460px;
+        padding: 40px;
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.45);
+        border: 1px solid rgba(20, 20, 20, 0.12);
+        box-shadow: 0 30px 80px rgba(20, 20, 20, 0.12);
+        backdrop-filter: blur(18px);
+      }
+
+      .no-script-card h1 {
+        margin: 0 0 12px;
+        font-size: 32px;
+        letter-spacing: -0.04em;
+      }
+
+      .no-script-card p {
+        margin: 0;
+        color: var(--brown);
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <noscript>
+      <div class="no-script-box">
+        <div class="no-script-card">
+          <h1>Laundry Near</h1>
+          <p>
+            Please enable JavaScript to experience premium laundry pickup,
+            delivery, and order tracking.
+          </p>
+        </div>
+      </div>
+    </noscript>
+
+    <script type="module" src="/src/main.jsx"></script>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </body>
+</html>
