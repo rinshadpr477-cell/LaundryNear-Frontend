@@ -20,31 +20,24 @@ function TrackOrder() {
     "Delivered"
   ]
 
-  // ---------------- FETCH ORDER ----------------
-
 
   const getOrderDetails = async () => {
     const token = sessionStorage.getItem("token")
-
     if (!token) {
       navigate('/auth')
       return
     }
-
     const reqHeader = {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
     }
-
     try {
       const result = await singleOrderAPI(id, reqHeader)
-
       if (result.status === 200) {
         setOrder(result.data)
       } else {
         navigate('/customer/my-orders')
       }
-
     } catch (err) {
       console.log("TRACK ERROR:", err)
       navigate('/customer/my-orders')
@@ -52,14 +45,10 @@ function TrackOrder() {
   }
 
   useEffect(() => {
-
-    getOrderDetails()
-
-    
+    getOrderDetails()   
     const interval = setInterval(() => {
       getOrderDetails()
     }, 5000)
-
     return () => clearInterval(interval)
 
   }, [id])
@@ -70,7 +59,7 @@ function TrackOrder() {
   return (
     <div className="min-h-screen bg-[#F5F1EB] lg:ml-[260px] px-8 py-8">
 
-      {/* HEADER */}
+      
       <div className="max-w-5xl mx-auto mb-10">
         <p className="uppercase tracking-[5px] text-xs text-[#7B614D] mb-3">
           Track Order
@@ -81,10 +70,10 @@ function TrackOrder() {
         </h1>
       </div>
 
-      {/* CARD */}
+     
       <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 border border-[#E7DED1]">
 
-        {/* ORDER INFO */}
+       
         <div className="mb-10">
           <h2 className="text-xl font-bold">
             Order ID: {order?._id}
@@ -97,23 +86,19 @@ function TrackOrder() {
           </p>
         </div>
 
-        {/* TIMELINE */}
+        
         <div className="space-y-6">
-
           {steps.map((step, index) => {
-
             const completed = index <= safeIndex
-
             return (
               <div key={index} className="flex items-center gap-5">
 
-                {/* DOT */}
+                
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
                   ${completed ? 'bg-[#1A1A1A] text-white' : 'bg-[#EFE7DD] text-[#8A7563]'}`}>
                   {index + 1}
                 </div>
-
-                {/* STEP TEXT */}
+           
                 <div>
                   <h3 className={`text-lg font-semibold
                     ${completed ? 'text-[#1A1A1A]' : 'text-[#9B8A7A]'}`}>
@@ -129,10 +114,7 @@ function TrackOrder() {
 
        
         <div className="mt-10">
-          <Link
-            to="/my-orders"
-            className="inline-block bg-[#1A1A1A] text-white px-6 py-3 rounded-2xl hover:bg-[#3F2F24] duration-300"
-          >
+          <Link to="/my-orders"  className="inline-block bg-[#1A1A1A] text-white px-6 py-3 rounded-2xl hover:bg-[#3F2F24] duration-300" >
             Back To Orders
           </Link>
         </div>

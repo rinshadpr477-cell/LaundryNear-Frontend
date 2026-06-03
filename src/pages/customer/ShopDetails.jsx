@@ -16,13 +16,10 @@ function ShopDetails() {
 
   const getShopDetails = async () => {
     try {
-
       const result = await getSingleShopAPI(id)
-
       if (result.status === 200) {
         setShop(result.data)
       }
-
     } catch (err) {
       console.log(err)
     }

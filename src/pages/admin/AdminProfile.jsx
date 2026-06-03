@@ -33,7 +33,6 @@ function AdminProfile() {
   })
 
   useEffect(() => {
-
     const existingUser = JSON.parse(
       sessionStorage.getItem("existingUser")
     )
@@ -50,49 +49,32 @@ function AdminProfile() {
   }, [])
 
   const handleProfileUpdate = async () => {
-
     const token = sessionStorage.getItem("token")
-
     const reqBody = new FormData()
-
     reqBody.append("username", admin.username)
     reqBody.append("phone", admin.phone)
-
     if (profileFile) {
       reqBody.append("profile", profileFile)
     }
-
     const reqHeader = {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`
     }
 
     try {
-
-      const result = await updateAdminProfileAPI(
-        reqBody,
-        reqHeader
-      )
-
+      const result = await updateAdminProfileAPI(reqBody, reqHeader)
       if (result.status === 200) {
-
         toast.success("Profile updated successfully")
-
         setAdmin(result.data)
-
         sessionStorage.setItem(
           "existingUser",
           JSON.stringify(result.data)
         )
-
         setAdminProfileUpdateStatus(result.data)
-
         setPreview("")
         setProfileFile("")
       }
-
     } catch (err) {
-
       toast.error(
         err.response?.data || "Profile update failed"
       )
@@ -101,9 +83,7 @@ function AdminProfile() {
   }
 
   const handlePasswordUpdate = async () => {
-
     const token = sessionStorage.getItem("token")
-
     if (
       !passwordData.oldPassword ||
       !passwordData.newPassword ||
@@ -112,7 +92,6 @@ function AdminProfile() {
       toast.warning("Please fill all fields")
       return
     }
-
     if (
       passwordData.newPassword !==
       passwordData.confirmPassword
@@ -120,41 +99,26 @@ function AdminProfile() {
       toast.warning("Passwords do not match")
       return
     }
-
     const reqBody = {
       oldPassword: passwordData.oldPassword,
       newPassword: passwordData.newPassword
     }
-
     const reqHeader = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`
     }
-
     try {
-
-      const result = await updateAdminPasswordAPI(
-        reqBody,
-        reqHeader
-      )
-
+      const result = await updateAdminPasswordAPI(reqBody, reqHeader)
       if (result.status === 200) {
-
         toast.success("Password updated successfully")
-
         setPasswordData({
           oldPassword: "",
           newPassword: "",
           confirmPassword: ""
         })
       }
-
     } catch (err) {
-
-      toast.error(
-        err.response?.data || "Password update failed"
-      )
-
+      toast.error(err.response?.data || "Password update failed")
     }
   }
 
@@ -166,8 +130,7 @@ function AdminProfile() {
       <main className="lg:ml-[260px] min-h-screen">
 
         <DashboardHeader
-          title="Admin Profile"
-        />
+          title="Admin Profile" />
 
         <div className="p-8">
 
@@ -187,26 +150,12 @@ function AdminProfile() {
 
                     {
                       preview ?
-
-                        <img
-                          src={preview}
-                          alt=""
-                          className="w-full h-full object-cover"
-                        />
-
+                        <img  src={preview}  alt="" className="w-full h-full object-cover" />
                         :
-
                         admin.profile ?
 
-                          <img
-                            src={`${SERVER_URL}/uploads/${admin.profile}`}
-                            alt=""
-                            className="w-full h-full object-cover"
-                          />
-
-                          :
-
-                          "👤"
+                          <img src={`${SERVER_URL}/uploads/${admin.profile}`} alt="" className="w-full h-full object-cover" />
+                          : "👤"
                     }
 
                   </div>
@@ -215,22 +164,10 @@ function AdminProfile() {
 
                     <FaCamera />
 
-                    <input
-                      hidden
-                      type="file"
-                      onChange={(e) => {
-
-                        setProfileFile(
-                          e.target.files[0]
-                        )
-
-                        setPreview(
-                          URL.createObjectURL(
-                            e.target.files[0]
-                          )
-                        )
-                      }}
-                    />
+                    <input hidden type="file" onChange={(e) => {
+                      setProfileFile(e.target.files[0])
+                      setPreview(URL.createObjectURL(e.target.files[0]))
+                    }} />
 
                   </label>
 

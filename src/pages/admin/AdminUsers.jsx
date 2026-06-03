@@ -9,7 +9,7 @@ function AdminUsers() {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(false)
 
-  // ---------------- GET USERS ----------------
+ 
   const getAllUsers = async () => {
 
     const token = sessionStorage.getItem("token")
@@ -17,22 +17,17 @@ function AdminUsers() {
       toast.error("Unauthorized access")
       return
     }
-
     try {
       setLoading(true)
-
       const reqHeader = {
         Authorization: `Bearer ${token}`
       }
-
       const result = await adminAllUsersAPI(reqHeader)
-
       if (result.status === 200) {
         setUsers(result.data || [])
       } else {
         toast.error("Failed to fetch users")
       }
-
     } catch (err) {
       console.log(err)
       toast.error("Server error while fetching users")
@@ -45,7 +40,7 @@ function AdminUsers() {
     getAllUsers()
   }, [])
 
-  // ---------------- UI ----------------
+ 
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
 
@@ -107,10 +102,7 @@ function AdminUsers() {
                 <tbody>
 
                   {users.map((item) => (
-                    <tr
-                      key={item._id}
-                      className="border-t border-[#EFE6DA] hover:bg-[#FAF7F2]"
-                    >
+                    <tr key={item._id}   className="border-t border-[#EFE6DA] hover:bg-[#FAF7F2]" >
 
                       <td className="px-6 py-4 font-semibold">
                         {item.username}

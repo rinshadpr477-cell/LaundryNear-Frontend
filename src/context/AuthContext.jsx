@@ -8,16 +8,13 @@ function AuthContext({ children }) {
     const [authorisedUser, setAuthorisedUser] = useState(false)
 
     useEffect(() => {
-
         if (
             sessionStorage.getItem("token") &&
             sessionStorage.getItem("existingUser")
         ) {
-
             const user = JSON.parse(
                 sessionStorage.getItem("existingUser")
             )
-
             setRole(user.role)
             setAuthorisedUser(true)
         }
@@ -26,13 +23,7 @@ function AuthContext({ children }) {
 
     return (
         <routeGuardContext.Provider
-            value={{
-                role,
-                authorisedUser,
-                setAuthorisedUser,
-                setRole
-            }}
-        >
+            value={{ role, authorisedUser, setAuthorisedUser, setRole }} >
             {children}
         </routeGuardContext.Provider>
     )

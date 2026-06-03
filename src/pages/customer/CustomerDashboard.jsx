@@ -12,18 +12,14 @@ function CustomerDashboard() {
   const [shops, setShops] = useState([])
 
   const existingUser = JSON.parse(sessionStorage.getItem("existingUser"))
-
   const getCustomerOrders = async () => {
     const token = sessionStorage.getItem("token")
-
     if (token) {
       const reqHeader = {
         Authorization: `Bearer ${token}`
       }
-
       const result = await customerOrdersAPI(reqHeader)
       console.log(result)
-
       if (result.status === 200) {
         setOrders(result.data)
       }
@@ -114,10 +110,7 @@ function CustomerDashboard() {
           {orders.length > 0 ? (
             <div className="grid md:grid-cols-3 gap-6">
               {orders.slice(0, 3).map((item) => (
-                <div
-                  key={item._id}
-                  className="border border-[#E3D7C8] rounded-3xl p-5 bg-[#FAF7F2]"
-                >
+                <div key={item._id}  className="border border-[#E3D7C8] rounded-3xl p-5 bg-[#FAF7F2]" >
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <h3 className="font-bold text-[#1A1A1A]">
@@ -142,11 +135,7 @@ function CustomerDashboard() {
               ))}
             </div>
           ) : (
-            <EmptyState
-              title="No Orders Yet"
-              message="You have not placed any laundry orders yet. Start by exploring nearby laundry shops."
-            />
-          )}
+            <EmptyState title="No Orders Yet"   message="You have not placed any laundry orders yet. Start by exploring nearby laundry shops." /> )}
         </div>
       </main>
     </div>

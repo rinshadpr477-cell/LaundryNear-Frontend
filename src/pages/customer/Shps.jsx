@@ -39,13 +39,9 @@ function Shps() {
 
   return (
     <div className="min-h-screen bg-[#F5F1EB] text-[#1A1A1A]">
-
       {
         token &&
-        <DashboardHeader
-          title="Laundry Shops"
-          showSearch={true}
-        />
+        <DashboardHeader title="Laundry Shops" showSearch={true}/>
       }
 
       <main className="pt-10 px-6 md:px-10 pb-24">
@@ -63,10 +59,7 @@ function Shps() {
                 Please login to view available laundry shops and place orders.
               </p>
 
-              <Link
-                to="/auth"
-                className="inline-block bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#3F2F24] duration-300"
-              >
+              <Link to="/auth"   className="inline-block bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#3F2F24] duration-300" >
                 Login Now
               </Link>
 
@@ -120,10 +113,7 @@ function Shps() {
 
                     filteredShops.map((item) => (
 
-                      <article
-                        key={item._id}
-                        className="group bg-[#F8F4ED] border border-[#E3D7C8] rounded-[2rem] p-7 shadow-[0_20px_55px_rgba(63,47,36,0.08)] hover:shadow-[0_28px_70px_rgba(63,47,36,0.14)] hover:-translate-y-1 duration-300"
-                      >
+                      <article key={item._id} className="group bg-[#F8F4ED] border border-[#E3D7C8] rounded-[2rem] p-7 shadow-[0_20px_55px_rgba(63,47,36,0.08)] hover:shadow-[0_28px_70px_rgba(63,47,36,0.14)] hover:-translate-y-1 duration-300" >
 
                         <div className="flex items-start justify-between gap-4">
 
@@ -159,10 +149,7 @@ function Shps() {
                             Fast Pickup
                           </p>
 
-                          <Link
-                            to={`/shop-details/${item._id}`}
-                            className="bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#3F2F24] duration-300"
-                          >
+                          <Link to={`/shop-details/${item._id}`} className="bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#3F2F24] duration-300"  >
                             View Details
                           </Link>
 

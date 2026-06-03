@@ -16,15 +16,12 @@ function MyOrders() {
   }, [])
 
   const getOrders = async () => {
-
     const token = sessionStorage.getItem("token")
     if (!token) return
-
     try {
       const result = await customerOrdersAPI({
         Authorization: `Bearer ${token}`
       })
-
       if (result.status === 200) {
         setOrders(result.data)
       }
@@ -36,9 +33,7 @@ function MyOrders() {
   }
 
   const cancelOrder = async (id) => {
-
     const token = sessionStorage.getItem("token")
-
     try {
       await axios.put(
         `http://localhost:4000/order/cancel/${id}`,
@@ -58,9 +53,7 @@ function MyOrders() {
   }
 
   const payNow = async (order) => {
-
     const token = sessionStorage.getItem("token")
-
     if (!order?._id) {
       toast.warn("Invalid order")
       return
@@ -72,7 +65,6 @@ function MyOrders() {
     }
 
     try {
-
       setLoadingId(order._id)
       toast.info("Initializing payment...")
 
@@ -103,7 +95,6 @@ function MyOrders() {
 
         handler: async function (response) {
           try {
-
             const verify = await axios.post(
               "http://localhost:4000/payment/verify",
               {
@@ -116,35 +107,28 @@ function MyOrders() {
                 headers: { Authorization: `Bearer ${token}` }
               }
             )
-
             if (verify.data?.success) {
               toast.success("Payment Successful")
               getOrders()
             } else {
               toast.error("Payment verification failed")
             }
-
           } catch (err) {
             console.log(err)
             toast.error("Verification error")
           }
         },
-
         modal: {
           ondismiss: function () {
             toast.info("Payment cancelled")
           }
         }
       }
-
       const rzp = new window.Razorpay(options)
-
       rzp.on("payment.failed", function () {
         toast.error("Payment Failed")
       })
-
       rzp.open()
-
     } catch (err) {
       console.log("PAYMENT ERROR:", err.response?.data || err)
       toast.error("Payment initiation failed")
@@ -181,39 +165,20 @@ function MyOrders() {
 
               <p className="mt-2">₹{item.amount}</p>
 
-              {/* BUTTON ROW */}
-              <div className="mt-4 flex gap-2">
-
-                {/* TRACK */}
-                <button
-                  onClick={() => navigate(`/customer/track-order/${item._id}`)}
-                  className="flex-1 bg-black text-white py-2 rounded-xl"
-                >
-                  Track
-                </button>
-
-                {/* SHOPS (NEW BUTTON) */}
-                <button
-                  onClick={() => navigate("/shps")}
-                  className="flex-1 bg-[#F5F1EB] border border-[#E3D7C8] text-[#3F2F24] py-2 rounded-xl"
-                >
-                  Shops
-                </button>
-
+             
+              <div className="mt-4 flex gap-2">    
+                <button onClick={() => navigate(`/customer/track-order/${item._id}`)} className="flex-1 bg-black text-white py-2 rounded-xl" > Track </button>  
+                <button onClick={() => navigate("/shps")} className="flex-1 bg-[#F5F1EB] border border-[#E3D7C8] text-[#3F2F24] py-2 rounded-xl" > Shops </button>
               </div>
 
-              {/* PAY */}
+              
               {item.status === "Pending Payment" && (
-                <button
-                  onClick={() => payNow(item)}
-                  disabled={loadingId === item._id}
-                  className="mt-3 w-full bg-green-600 text-white py-2 rounded-xl"
-                >
+                <button onClick={() => payNow(item)} disabled={loadingId === item._id} className="mt-3 w-full bg-green-600 text-white py-2 rounded-xl"  >
                   {loadingId === item._id ? "Processing..." : "Pay Now"}
                 </button>
               )}
 
-              {/* CANCEL */}
+           
               {item.status !== "Delivered" &&
                 item.status !== "Out for Delivery" &&
                 item.status !== "Cancelled" &&

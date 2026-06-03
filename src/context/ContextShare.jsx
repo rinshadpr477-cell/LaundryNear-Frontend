@@ -8,8 +8,7 @@ function ContextShare({ children }) {
 
     return (
         <searchKeyContext.Provider
-            value={{ searchKey, setSearchKey }}
-        >
+            value={{ searchKey, setSearchKey }} >
             {children}
         </searchKeyContext.Provider>
     )

@@ -9,12 +9,10 @@ function AdminOrders() {
 
   const getAllOrders = async () => {
     const token = sessionStorage.getItem("token")
-
     if (token) {
       const reqHeader = {
         Authorization: `Bearer ${token}`
       }
-
       const result = await adminAllOrdersAPI(reqHeader)
       console.log(result)
 

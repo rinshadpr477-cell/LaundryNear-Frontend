@@ -122,8 +122,7 @@ function ShopDashboard() {
 
                 <div
                   key={item._id}
-                  className="border border-[#E3D7C8] rounded-2xl p-5"
-                >
+                  className="border border-[#E3D7C8] rounded-2xl p-5" >
 
                   <div className="flex justify-between mb-4">
                     <h3 className="font-bold">
@@ -140,7 +139,7 @@ function ShopDashboard() {
                   </p>
 
                   <p className="text-sm text-[#7B614D] mt-3">
-                    📞 {item.phone}
+                    {item.phone}
                   </p>
 
                 </div>

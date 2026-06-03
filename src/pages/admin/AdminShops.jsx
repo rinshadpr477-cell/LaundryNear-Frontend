@@ -9,7 +9,7 @@ function AdminShops() {
   const [shops, setShops] = useState([])
   const [loading, setLoading] = useState(false)
 
-  // ---------------- GET SHOPS ----------------
+  
   const getAllShops = async () => {
 
     try {
@@ -46,7 +46,7 @@ function AdminShops() {
     getAllShops()
   }, [])
 
-  // ---------------- UI ----------------
+ 
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
 
@@ -71,10 +71,8 @@ function AdminShops() {
 
         </div>
 
-        {/* TABLE */}
-        <div className="bg-white border border-[#E3D7C8] rounded-3xl overflow-hidden">
-
-          {/* TITLE */}
+       
+        <div className="bg-white border border-[#E3D7C8] rounded-3xl overflow-hidden">     
           <div className="px-6 py-5 border-b border-[#E3D7C8] flex items-center gap-3">
             <FaStore className="text-[#3F2F24]" />
             <h2 className="text-2xl font-bold text-[#1A1A1A]">
@@ -82,7 +80,7 @@ function AdminShops() {
             </h2>
           </div>
 
-          {/* LOADING */}
+          
           {loading ? (
             <div className="p-10 text-center text-[#6B4F3B]">
               Loading shops...
@@ -112,8 +110,7 @@ function AdminShops() {
                   {shops.map((item) => (
                     <tr
                       key={item._id}
-                      className="border-t border-[#EFE6DA] hover:bg-[#FAF7F2]"
-                    >
+                      className="border-t border-[#EFE6DA] hover:bg-[#FAF7F2]"  >
 
                       <td className="px-6 py-4 font-semibold">
                         {item.shopName}

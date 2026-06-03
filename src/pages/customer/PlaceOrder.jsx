@@ -113,15 +113,10 @@ function PlaceOrder() {
       try {
 
         const result = await placeOrderAPI(reqBody, reqHeader)
-
         console.log(result)
-
         if (result.status === 200) {
-
           toast.success("Order placed successfully")
-
           sessionStorage.removeItem("placeOrderForm")
-
           setFormData({
             customerName: "",
             phone: "",
@@ -130,16 +125,12 @@ function PlaceOrder() {
             quantity: "",
             amount: ""
           })
-
           navigate('/my-orders')
-
         }
-
       } catch (err) {
         console.log(err)
         toast.error("Order placing failed")
       }
-
     } else {
       toast.warning("Please login first")
       navigate('/auth')

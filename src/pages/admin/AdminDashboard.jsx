@@ -6,13 +6,7 @@ import DashboardHeader from '../../components/common/DashboardHeader'
 
 function AdminDashboard() {
 
-  const [dashboardData, setDashboardData] = useState({
-    totalUsers: 0,
-    totalShops: 0,
-    totalOrders: 0,
-    deliveredOrders: 0,
-    revenue: 0
-  })
+  const [dashboardData, setDashboardData] = useState({ totalUsers: 0,totalShops: 0, totalOrders: 0, deliveredOrders: 0, revenue: 0 })
 
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
@@ -22,7 +16,7 @@ function AdminDashboard() {
     getAllOrders()
   }, [])
 
-  // ---------------- DASHBOARD COUNTS ----------------
+
   const getDashboardData = async () => {
     const token = sessionStorage.getItem("token")
     if (!token) return
@@ -31,17 +25,15 @@ function AdminDashboard() {
       const result = await adminDashboardCountAPI({
         Authorization: `Bearer ${token}`
       })
-
       if (result.status === 200) {
         setDashboardData(result.data || dashboardData)
       }
-
     } catch (err) {
       console.log("DASHBOARD ERROR:", err)
     }
   }
 
-  // ---------------- ALL ORDERS ----------------
+ 
   const getAllOrders = async () => {
     const token = sessionStorage.getItem("token")
     if (!token) return
@@ -71,13 +63,9 @@ function AdminDashboard() {
     <div className="min-h-screen bg-[#F5F1EB]">
 
       <AdminSidebar />
-
       <main className="lg:ml-[260px] min-h-screen">
 
-        <DashboardHeader
-          title="Admin Control Center"
-          showSearch={true}
-        />
+        <DashboardHeader title="Admin Control Center" showSearch={true}/>
 
         <div className="p-8">
 
@@ -96,7 +84,6 @@ function AdminDashboard() {
             </p>
           </div>
 
-          {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
 
             <StatCard icon={<FaBoxOpen />} value={totalOrders} label="Total Orders" />
@@ -106,7 +93,7 @@ function AdminDashboard() {
 
           </div>
 
-          {/* ORDERS TABLE */}
+          
           <div className="bg-white border border-[#E3D7C8] rounded-3xl overflow-hidden">
 
             <div className="px-6 py-5 border-b border-[#E3D7C8]">
@@ -179,7 +166,6 @@ function AdminDashboard() {
   )
 }
 
-// small reusable card
 const StatCard = ({ icon, value, label }) => (
   <div className="bg-white border border-[#E3D7C8] rounded-3xl p-6">
     <div className="text-2xl text-[#3F2F24] mb-3">{icon}</div>
