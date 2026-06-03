@@ -14,20 +14,15 @@ function AdminShops() {
 
     try {
       setLoading(true)
-
       const token = sessionStorage.getItem("token")
-
       if (!token) {
         toast.error("Unauthorized access")
         return
       }
-
       const reqHeader = {
         Authorization: `Bearer ${token}`
       }
-
       const result = await getAllShopsAPI(reqHeader)
-
       if (result.status === 200) {
         setShops(result.data || [])
       } else {
@@ -54,7 +49,7 @@ function AdminShops() {
 
       <main className="lg:ml-[260px] px-8 py-8">
 
-        {/* HEADER */}
+      
         <div className="mb-8 bg-white border border-[#E6DDD2] rounded-3xl p-7">
 
           <p className="uppercase tracking-[5px] text-xs text-[#7B614D] mb-3">

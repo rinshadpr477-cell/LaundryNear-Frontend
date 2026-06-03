@@ -23,7 +23,6 @@ function DashboardHeader({ title, showSearch = false }) {
 
   const handleProfile = () => {
     setProfileOpen(false)
-
     if (existingUser?.role === "admin") navigate('/admin-profile')
     else if (existingUser?.role === "shop") navigate('/shop-profile')
     else if (existingUser?.role === "delivery") navigate('/delivery-profile')

@@ -1,59 +1,29 @@
-import React from 'react'
+import React from "react";
 
 function DeliveryProfile() {
   return (
-      <div className="p-6">
+    <div className="p-4">
+      <div className="bg-white rounded-xl shadow-sm border p-4 space-y-4">
 
-      <h2 className="text-3xl font-bold mb-6">
-        Shop Profile
-      </h2>
+        <h2 className="text-xl font-semibold tracking-tight">
+          Delivery Profile
+        </h2>
+    
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
 
-      <div className="bg-white rounded-xl shadow p-6">
-
-        <div className="grid md:grid-cols-2 gap-4">
-
-          <input
-            type="text"
-            placeholder="Shop Name"
-            className="border p-3 rounded"
-          />
-
-          <input
-            type="text"
-            placeholder="Owner Name"
-            className="border p-3 rounded"
-          />
-
-          <input
-            type="email"
-            placeholder="Email"
-            className="border p-3 rounded"
-          />
-
-          <input
-            type="text"
-            placeholder="Phone"
-            className="border p-3 rounded"
-          />
+          <input className="input" type="text" placeholder="Shop Name" />
+          <input className="input" type="text" placeholder="Owner Name" />
+          <input className="input" type="email" placeholder="Email" />
+          <input className="input" type="text" placeholder="Phone" />
 
         </div>
-
-        <textarea
-          rows="4"
-          placeholder="Address"
-          className="border p-3 rounded w-full mt-4"
-        />
-
-        <button
-          className="bg-green-600 text-white px-6 py-3 rounded mt-4"
-        >
-          Update Profile
-        </button>
-
+        <textarea rows="3" placeholder="Address" className="input w-full resize-none" />
+        <div className="flex justify-end">
+          <button className="btn"> Update Profile</button>
+        </div>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default DeliveryProfile
+export default DeliveryProfile;

@@ -102,23 +102,17 @@ function CustomerProfile() {
 
             <main className="pt-32 px-6 md:px-10 pb-24">
                 <section className="max-w-5xl mx-auto">
-
                     <p className="uppercase tracking-[5px] text-xs text-[#7B614D] mb-3">
                         Customer Account
                     </p>
-
                     <h1 className="text-4xl md:text-6xl font-serif mb-10">
                         My Profile
                     </h1>
-
                     <div className="grid lg:grid-cols-2 gap-8">
-
                         <div className="bg-[#F8F4ED] border border-[#E3D7C8] rounded-[2rem] p-8 shadow-[0_20px_55px_rgba(63,47,36,0.08)]">
-
                             <h2 className="text-2xl font-serif mb-6">
                                 Profile Details
                             </h2>
-
                             <div className="flex items-center gap-6 mb-8">
 
                                 <div className="relative">
@@ -135,10 +129,9 @@ function CustomerProfile() {
 
                                     <label className="absolute bottom-1 right-1 w-10 h-10 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center cursor-pointer hover:bg-[#3F2F24] duration-300 shadow-lg">
                                         <FaCamera />
-
-                                        <input  type="file" hidden onChange={(e) => {
-                                                setProfileFile(e.target.files[0]) 
-                                                setPreview(URL.createObjectURL(e.target.files[0])) }}  />
+                                        <input type="file" hidden onChange={(e) => {
+                                            setProfileFile(e.target.files[0])
+                                            setPreview(URL.createObjectURL(e.target.files[0])) }} />
                                     </label>
                                 </div>
 
@@ -151,13 +144,13 @@ function CustomerProfile() {
 
                             <div className="space-y-5">
 
-                                <input type="text" value={customer.username} onChange={(e) => setCustomer({ ...customer, username: e.target.value })}  placeholder="Name" className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
-                                <input type="email"  value={customer.email}  readOnly className="w-full bg-[#EEE7DD] border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none text-[#7B614D]"/>
-                                <input type="text" value={customer.phone} onChange={(e) => setCustomer({ ...customer, phone: e.target.value })} placeholder="Phone"  className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
+                                <input type="text" value={customer.username} onChange={(e) => setCustomer({ ...customer, username: e.target.value })} placeholder="Name" className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
+                                <input type="email" value={customer.email} readOnly className="w-full bg-[#EEE7DD] border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none text-[#7B614D]" />
+                                <input type="text" value={customer.phone} onChange={(e) => setCustomer({ ...customer, phone: e.target.value })} placeholder="Phone" className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
 
-                                <textarea value={customer.address}  onChange={(e) => setCustomer({ ...customer, address: e.target.value })}  placeholder="Address"  rows="4"  className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
+                                <textarea value={customer.address} onChange={(e) => setCustomer({ ...customer, address: e.target.value })} placeholder="Address" rows="4" className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
 
-                                <button onClick={handleProfileUpdate}  className="w-full bg-[#1A1A1A] text-white py-4 rounded-full hover:bg-[#3F2F24] duration-300" >
+                                <button onClick={handleProfileUpdate} className="w-full bg-[#1A1A1A] text-white py-4 rounded-full hover:bg-[#3F2F24] duration-300" >
                                     Update Profile
                                 </button>
 
@@ -170,9 +163,9 @@ function CustomerProfile() {
                             </h2>
                             <div className="space-y-5">
 
-                                <input type="password" value={passwordData.oldPassword} onChange={(e) => setPasswordData({ ...passwordData, oldPassword: e.target.value })}  placeholder="Old Password"  className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
-                                <input  type="password" value={passwordData.newPassword}  onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })} placeholder="New Password"  className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
-                                <input  type="password"  value={passwordData.confirmPassword} onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })} placeholder="Confirm Password"  className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
+                                <input type="password" value={passwordData.oldPassword} onChange={(e) => setPasswordData({ ...passwordData, oldPassword: e.target.value })} placeholder="Old Password" className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
+                                <input type="password" value={passwordData.newPassword} onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })} placeholder="New Password" className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
+                                <input type="password" value={passwordData.confirmPassword} onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })} placeholder="Confirm Password" className="w-full bg-white border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
                                 <button onClick={handlePasswordUpdate} className="w-full bg-[#1A1A1A] text-white py-4 rounded-full hover:bg-[#3F2F24] duration-300"  >  Update Password
                                 </button>
 

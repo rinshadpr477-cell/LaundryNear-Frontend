@@ -30,13 +30,10 @@ function DeliveryDashboard() {
     }
   }
 
-
-
-
   const totalDeliveries = orders.length
   const activeDeliveries = orders.filter(item => item.status !== "Delivered").length
   const completedDeliveries = orders.filter(item => item.status === "Delivered").length
-const pendingPickups = orders.filter(item => item.status === "Ready for Delivery").length
+  const pendingPickups = orders.filter(item => item.status === "Ready for Delivery").length
 
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
@@ -114,7 +111,7 @@ const pendingPickups = orders.filter(item => item.status === "Ready for Delivery
                   <p className="text-sm text-[#7B614D]">{item.serviceType}</p>
 
                   <p className="text-sm text-[#7B614D] mt-3">
-                     {item.address || "Calicut, Kerala"}
+                    {item.address || "Calicut, Kerala"}
                   </p>
 
                   <p className="text-sm text-[#7B614D] mt-2">
@@ -185,15 +182,10 @@ const pendingPickups = orders.filter(item => item.status === "Ready for Delivery
                     <p className="text-sm text-[#7B614D]">{completedDeliveries} orders delivered</p>
                   </div>
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </main>
     </div>
   )

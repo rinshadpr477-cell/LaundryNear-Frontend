@@ -13,8 +13,8 @@ function AdminSidebar() {
     { name: "Users", path: "/admin-users", icon: <FaUsers /> },
     { name: "Orders", path: "/admin-orders", icon: <FaBoxOpen /> },
     { name: "Profile", path: "/admin-profile", icon: <FaUser /> },
-     { name: "Home", path: "/", icon: <FaHome /> },
-   
+    { name: "Home", path: "/", icon: <FaHome /> },
+
   ]
 
   return (

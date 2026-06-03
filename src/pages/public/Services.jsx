@@ -82,11 +82,8 @@ function Services() {
         <section className="max-w-[1500px] mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-7">
 
           {services.map((item) => (
-
             <article key={item.id} className="group bg-[#F8F4ED] border border-[#E3D7C8] rounded-[2rem] p-7 shadow-[0_20px_55px_rgba(63,47,36,0.08)] hover:shadow-[0_28px_70px_rgba(63,47,36,0.14)] hover:-translate-y-1 duration-300">
-
               <div className="flex items-start justify-between gap-4">
-
                 <div>
                   <p className="text-[10px] uppercase tracking-[4px] text-[#7B614D] font-bold mb-3">
                     Laundry Care
@@ -97,9 +94,7 @@ function Services() {
                   </h2>
                 </div>
 
-                <div className="w-14 h-14 rounded-full bg-[#E8DCCB] border border-[#CBB89B] flex items-center justify-center text-xl">
-                  ✦
-                </div>
+                <div className="w-14 h-14 rounded-full bg-[#E8DCCB] border border-[#CBB89B] flex items-center justify-center text-xl"> ✦ </div>
 
               </div>
 

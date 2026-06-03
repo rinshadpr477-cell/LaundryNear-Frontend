@@ -153,7 +153,6 @@ function AdminProfile() {
                         <img  src={preview}  alt="" className="w-full h-full object-cover" />
                         :
                         admin.profile ?
-
                           <img src={`${SERVER_URL}/uploads/${admin.profile}`} alt="" className="w-full h-full object-cover" />
                           : "👤"
                     }
@@ -166,8 +165,7 @@ function AdminProfile() {
 
                     <input hidden type="file" onChange={(e) => {
                       setProfileFile(e.target.files[0])
-                      setPreview(URL.createObjectURL(e.target.files[0]))
-                    }} />
+                      setPreview(URL.createObjectURL(e.target.files[0])) }} />
 
                   </label>
 
@@ -189,44 +187,10 @@ function AdminProfile() {
 
               <div className="space-y-5">
 
-                <input
-                  type="text"
-                  value={admin.username}
-                  onChange={(e) =>
-                    setAdmin({
-                      ...admin,
-                      username: e.target.value
-                    })
-                  }
-                  placeholder="Username"
-                  className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none"
-                />
-
-                <input
-                  type="email"
-                  value={admin.email}
-                  readOnly
-                  className="w-full bg-gray-100 border border-[#E3D7C8] rounded-2xl px-5 py-4"
-                />
-
-                <input
-                  type="text"
-                  value={admin.phone}
-                  onChange={(e) =>
-                    setAdmin({
-                      ...admin,
-                      phone: e.target.value
-                    })
-                  }
-                  placeholder="Phone"
-                  className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none"
-                />
-
-                <button
-                  onClick={handleProfileUpdate}
-                  className="w-full bg-black text-white py-4 rounded-full"
-                >
-                  Update Profile
+                <input type="text" value={admin.username} onChange={(e) => setAdmin({ ...admin, username: e.target.value }) } placeholder="Username" className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none"/>
+                <input type="email"  value={admin.email} readOnly className="w-full bg-gray-100 border border-[#E3D7C8] rounded-2xl px-5 py-4" />
+                <input type="text" value={admin.phone} onChange={(e) => setAdmin({...admin, phone: e.target.value })} placeholder="Phone" className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4 outline-none" />
+                <button onClick={handleProfileUpdate} className="w-full bg-black text-white py-4 rounded-full" >  Update Profile
                 </button>
 
               </div>
@@ -241,49 +205,11 @@ function AdminProfile() {
 
               <div className="space-y-5">
 
-                <input
-                  type="password"
-                  value={passwordData.oldPassword}
-                  onChange={(e) =>
-                    setPasswordData({
-                      ...passwordData,
-                      oldPassword: e.target.value
-                    })
-                  }
-                  placeholder="Old Password"
-                  className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4"
-                />
+                <input type="password" value={passwordData.oldPassword} onChange={(e) =>setPasswordData({ ...passwordData, oldPassword: e.target.value }) } placeholder="Old Password" className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4" />
+                <input type="password"value={passwordData.newPassword} onChange={(e) =>setPasswordData({...passwordData, newPassword: e.target.value})} placeholder="New Password" className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4" />
+                <input type="password" value={passwordData.confirmPassword}onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}  placeholder="Confirm Password" className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4" />
 
-                <input
-                  type="password"
-                  value={passwordData.newPassword}
-                  onChange={(e) =>
-                    setPasswordData({
-                      ...passwordData,
-                      newPassword: e.target.value
-                    })
-                  }
-                  placeholder="New Password"
-                  className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4"
-                />
-
-                <input
-                  type="password"
-                  value={passwordData.confirmPassword}
-                  onChange={(e) =>
-                    setPasswordData({
-                      ...passwordData,
-                      confirmPassword: e.target.value
-                    })
-                  }
-                  placeholder="Confirm Password"
-                  className="w-full border border-[#E3D7C8] rounded-2xl px-5 py-4"
-                />
-
-                <button
-                  onClick={handlePasswordUpdate}
-                  className="w-full bg-black text-white py-4 rounded-full"
-                >
+                <button  onClick={handlePasswordUpdate}  className="w-full bg-black text-white py-4 rounded-full" >
                   Update Password
                 </button>
 

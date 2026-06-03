@@ -69,7 +69,7 @@ function AdminDashboard() {
 
         <div className="p-8">
 
-          {/* HEADER CARD */}
+          
           <div className="mb-8 bg-white border border-[#E6DDD2] rounded-3xl p-7">
             <p className="uppercase tracking-[5px] text-xs text-[#7B614D] mb-3">
               Admin Dashboard

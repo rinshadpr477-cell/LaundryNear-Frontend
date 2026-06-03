@@ -64,19 +64,8 @@ function ShopDetails() {
 
           <div className="mt-10 flex flex-wrap gap-4">
 
-            <Link
-              to={`/customer/place-order/${shop._id}`}
-              className="bg-[#1A1A1A] text-white px-7 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#3F2F24] duration-300"
-            >
-              Place Order
-            </Link>
-
-            <Link
-              to="/shps"
-              className="border border-[#1A1A1A] px-7 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#1A1A1A] hover:text-white duration-300"
-            >
-              Back
-            </Link>
+            <Link to={`/customer/place-order/${shop._id}`} className="bg-[#1A1A1A] text-white px-7 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#3F2F24] duration-300" > Place Order  </Link>
+            <Link to="/shps" className="border border-[#1A1A1A] px-7 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#1A1A1A] hover:text-white duration-300" > Back  </Link>
 
           </div>
 

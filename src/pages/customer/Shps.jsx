@@ -105,36 +105,23 @@ function Shps() {
                 </div>
 
               </section>
-
               <section className="max-w-[1500px] mx-auto grid md:grid-cols-2 xl:grid-cols-3 gap-7">
-
                 {
                   filteredShops.length > 0 ?
-
                     filteredShops.map((item) => (
-
                       <article key={item._id} className="group bg-[#F8F4ED] border border-[#E3D7C8] rounded-[2rem] p-7 shadow-[0_20px_55px_rgba(63,47,36,0.08)] hover:shadow-[0_28px_70px_rgba(63,47,36,0.14)] hover:-translate-y-1 duration-300" >
-
                         <div className="flex items-start justify-between gap-4">
-
                           <div>
-
                             <p className="text-[10px] uppercase tracking-[4px] text-[#7B614D] font-bold mb-3">
                               Laundry Partner
                             </p>
-
                             <h2 className="text-2xl font-serif">
                               {item.shopName}
                             </h2>
-
                           </div>
-
-                          <div className="w-14 h-14 rounded-full bg-[#E8DCCB] border border-[#CBB89B] flex items-center justify-center text-xl">
-                            
+                          <div className="w-14 h-14 rounded-full bg-[#E8DCCB] border border-[#CBB89B] flex items-center justify-center text-xl">                     
                           </div>
-
                         </div>
-
                         <div className="mt-7 space-y-3 text-[#6B4F3B]">
 
                           <p> {item.area}</p>
@@ -148,21 +135,14 @@ function Shps() {
                           <p className="text-xs uppercase tracking-[3px] text-[#7B614D]">
                             Fast Pickup
                           </p>
-
                           <Link to={`/shop-details/${item._id}`} className="bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#3F2F24] duration-300"  >
                             View Details
                           </Link>
-
                         </div>
-
                       </article>
-
                     ))
-
                     :
-
                     <div className="col-span-full text-center py-20">
-
                       <h2 className="text-3xl font-serif mb-3">
                         No Shops Found
                       </h2>
@@ -170,10 +150,8 @@ function Shps() {
                       <p className="text-[#6B4F3B]">
                         Try searching with another keyword.
                       </p>
-
                     </div>
                 }
-
               </section>
             </>
         }

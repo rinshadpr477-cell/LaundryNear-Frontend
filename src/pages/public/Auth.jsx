@@ -95,7 +95,6 @@ function Auth() {
         const details = jwtDecode(
             credentialResponse.credential
         )
-
         try {
             const result = await googleLoginAPI({
                 username: details.name,
@@ -110,19 +109,16 @@ function Auth() {
                     "existingUser",
                     JSON.stringify(result.data.user)
                 )
-
                 sessionStorage.setItem(
                     "token",
                     result.data.token
                 )
                 setRole("customer")
                 setAuthorisedUser(true)
-
                 setTimeout(() => {
                     navigate("/customer-dashboard")
                 }, 1000)
             }
-
         } catch (err) {
             toast.error("Google Login Failed")
         }
@@ -133,13 +129,10 @@ function Auth() {
             <Header />
 
             <div className="relative w-full max-w-xl rounded-[36px] bg-white/35 backdrop-blur-2xl border border-white/40 px-10 py-14 md:px-16 shadow-[0_40px_140px_rgba(63,47,36,0.20)] overflow-hidden">
-
                 <div className="absolute inset-0 rounded-[36px] bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
-
                 <p className="relative text-center text-[#6B4F3B] tracking-[6px] text-xs font-bold uppercase mb-5">
                     Laundry Near
                 </p>
-
                 <h1 className="relative text-5xl md:text-6xl font-serif tracking-[7px] text-center text-[#1A1A1A] mb-5">
                     {isLogin ? "LOGIN" : "REGISTER"}
                 </h1>
@@ -152,19 +145,8 @@ function Auth() {
 
                 {!isLogin && (
                     <>
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            value={reqBody.username}
-                            onChange={(e) => setReqBody({ ...reqBody, username: e.target.value })}
-                            className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"
-                        />
-
-                        <select
-                            value={reqBody.role}
-                            onChange={(e) => setReqBody({ ...reqBody, role: e.target.value })}
-                            className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"
-                        >
+                        <input type="text" placeholder="Name"  value={reqBody.username} onChange={(e) => setReqBody({ ...reqBody, username: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none" />
+                        <select  value={reqBody.role} onChange={(e) => setReqBody({ ...reqBody, role: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"  >
                             <option value="customer">Customer</option>
                             <option value="shop">Shop Owner</option>
                             <option value="delivery">Delivery Agent</option>
@@ -172,36 +154,14 @@ function Auth() {
                         </select>
                     </>
                 )}
-
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={reqBody.email}
-                    onChange={(e) => setReqBody({ ...reqBody, email: e.target.value })}
-                    className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"
-                />
-
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={reqBody.password}
-                    onChange={(e) => setReqBody({ ...reqBody, password: e.target.value })}
-                    className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-8 outline-none"
-                />
+                <input type="email" placeholder="Email" value={reqBody.email} onChange={(e) => setReqBody({ ...reqBody, email: e.target.value })}className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"/>
+                <input type="password" placeholder="Password" value={reqBody.password} onChange={(e) => setReqBody({ ...reqBody, password: e.target.value })}className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-8 outline-none" />
 
                 {isLogin ? (
-                    <button
-                        onClick={handleLogin}
-                        className="w-full rounded-2xl bg-[#1A1A1A] text-white py-5 tracking-[4px] text-xs font-bold uppercase hover:bg-[#3F2F24] duration-300"
-                    >
-                        Login
+                    <button onClick={handleLogin} className="w-full rounded-2xl bg-[#1A1A1A] text-white py-5 tracking-[4px] text-xs font-bold uppercase hover:bg-[#3F2F24] duration-300"  >    Login
                     </button>
                 ) : (
-                    <button
-                        onClick={handleRegister}
-                        className="w-full rounded-2xl bg-[#1A1A1A] text-white py-5 tracking-[4px] text-xs font-bold uppercase hover:bg-[#3F2F24] duration-300"
-                    >
-                        Create Account
+                    <button onClick={handleRegister} className="w-full rounded-2xl bg-[#1A1A1A] text-white py-5 tracking-[4px] text-xs font-bold uppercase hover:bg-[#3F2F24] duration-300" > Create Account
                     </button>
                 )}
 
@@ -214,10 +174,7 @@ function Auth() {
                         </div>
 
                         <div className="flex justify-center">
-                            <GoogleLogin
-                                onSuccess={handleGoogleLogin}
-                                onError={() => toast.error("Google Login Failed")}
-                            />
+                            <GoogleLogin onSuccess={handleGoogleLogin} onError={() => toast.error("Google Login Failed")} />
                         </div>
                     </>
                 )}
@@ -226,11 +183,7 @@ function Auth() {
                     {isLogin
                         ? "Don't have an account?"
                         : "Already have an account?"}
-
-                    <button
-                        onClick={() => setIsLogin(!isLogin)}
-                        className="ml-2 font-semibold text-[#1A1A1A]"
-                    >
+                    <button onClick={() => setIsLogin(!isLogin)} className="ml-2 font-semibold text-[#1A1A1A]" >
                         {isLogin ? "Register" : "Login"}
                     </button>
                 </p>

@@ -12,14 +12,11 @@ function ShopDashboard() {
   const getShopOrders = async () => {
     const token = sessionStorage.getItem("token")
     if (token) {
-
       const reqHeader = {
         Authorization: `Bearer ${token}`
       }
-
       const result = await shopOrdersAPI(reqHeader)
       console.log(result)
-
       if (result.status === 200) {
         setShopOrders(result.data)
       }
@@ -29,8 +26,6 @@ function ShopDashboard() {
   useEffect(() => {
     getShopOrders()
   }, [])
-
-  
 
   const totalOrders = shopOrders.length
 
@@ -120,40 +115,28 @@ function ShopDashboard() {
 
               {shopOrders.slice(0, 4).map((item) => (
 
-                <div
-                  key={item._id}
-                  className="border border-[#E3D7C8] rounded-2xl p-5" >
-
+                <div key={item._id}className="border border-[#E3D7C8] rounded-2xl p-5" >
                   <div className="flex justify-between mb-4">
                     <h3 className="font-bold">
                       {item.customerName}
                     </h3>
-
                     <span className="px-3 py-1 rounded-full bg-[#F5F1EB] text-xs">
                       {item.status}
                     </span>
                   </div>
-
                   <p className="text-sm text-[#7B614D]">
                     {item.serviceType}
                   </p>
-
                   <p className="text-sm text-[#7B614D] mt-3">
                     {item.phone}
                   </p>
-
                 </div>
-
               ))}
-
             </div>
-
           </div>
 
           <div className="space-y-6">
-
             <div className="bg-[#101010] text-white rounded-3xl p-6">
-
               <p className="uppercase tracking-[4px] text-xs text-white/40 mb-3">
                 Quick Actions
               </p>
@@ -163,7 +146,6 @@ function ShopDashboard() {
               </h3>
 
               <div className="grid gap-3 mt-6">
-
                 <Link to="/shop-orders">
                   <button className="w-full bg-white text-[#111111] py-3 rounded-2xl text-sm font-semibold">
                     Manage Orders

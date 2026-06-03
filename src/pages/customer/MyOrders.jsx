@@ -58,16 +58,13 @@ function MyOrders() {
       toast.warn("Invalid order")
       return
     }
-
     if (!window.Razorpay) {
       toast.error("Razorpay SDK not loaded")
       return
     }
-
     try {
       setLoadingId(order._id)
       toast.info("Initializing payment...")
-
       const res = await axios.post(
         "http://localhost:4000/payment/create-order",
         {
@@ -78,15 +75,12 @@ function MyOrders() {
           headers: { Authorization: `Bearer ${token}` }
         }
       )
-
       const razorpayOrder = res.data?.razorpayOrder
       const key = res.data?.key
-
       if (!razorpayOrder || !key) {
         toast.error("Payment initialization failed")
         return
       }
-
       const options = {
         key,
         amount: razorpayOrder.amount,
@@ -124,6 +118,7 @@ function MyOrders() {
           }
         }
       }
+
       const rzp = new window.Razorpay(options)
       rzp.on("payment.failed", function () {
         toast.error("Payment Failed")
@@ -147,7 +142,6 @@ function MyOrders() {
       </div>
 
       {orders.length > 0 ? (
-
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
 
           {orders.map((item) => (
@@ -163,30 +157,22 @@ function MyOrders() {
                 </span>
               )}
 
-              <p className="mt-2">₹{item.amount}</p>
-
-             
+              <p className="mt-2">₹{item.amount}</p>         
               <div className="mt-4 flex gap-2">    
                 <button onClick={() => navigate(`/customer/track-order/${item._id}`)} className="flex-1 bg-black text-white py-2 rounded-xl" > Track </button>  
                 <button onClick={() => navigate("/shps")} className="flex-1 bg-[#F5F1EB] border border-[#E3D7C8] text-[#3F2F24] py-2 rounded-xl" > Shops </button>
               </div>
-
               
               {item.status === "Pending Payment" && (
                 <button onClick={() => payNow(item)} disabled={loadingId === item._id} className="mt-3 w-full bg-green-600 text-white py-2 rounded-xl"  >
                   {loadingId === item._id ? "Processing..." : "Pay Now"}
                 </button>
-              )}
-
-           
+              )}      
               {item.status !== "Delivered" &&
                 item.status !== "Out for Delivery" &&
                 item.status !== "Cancelled" &&
                 item.status !== "Paid" && (
-                  <button
-                    onClick={() => cancelOrder(item._id)}
-                    className="mt-3 w-full bg-red-500 text-white py-2 rounded-xl"
-                  >
+                  <button onClick={() => cancelOrder(item._id)} className="mt-3 w-full bg-red-500 text-white py-2 rounded-xl" >
                     Cancel Order
                   </button>
               )}
