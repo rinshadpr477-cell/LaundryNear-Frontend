@@ -145,7 +145,6 @@ function Auth() {
                         <select value={reqBody.role} onChange={(e) => setReqBody({ ...reqBody, role: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"  >
                             <option value="customer">Customer</option>
                             <option value="shop">Shop Owner</option>
-                            <option value="admin">Admin</option>
                         </select>
                     </>
                 )}
