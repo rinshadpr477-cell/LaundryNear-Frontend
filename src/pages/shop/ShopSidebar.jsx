@@ -10,8 +10,6 @@ function ShopSidebar() {
   const menuItems = [
     { name: "Dashboard", path: "/shop-dashboard", icon: <MdDashboard /> },
     { name: "Orders", path: "/shop-orders", icon: <FaBoxOpen /> },
-    { name: "Services", path: "/shop-services", icon: <MdDryCleaning /> },
-    { name: "Deliveries", path: "/shop-deliveries", icon: <FaTruckFast /> },
     { name: "Shop Profile", path: "/shop-profile", icon: <FaStore /> },
     { name: "Home", path: "/", icon: <FaHome /> },
 

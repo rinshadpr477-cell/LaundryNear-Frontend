@@ -68,23 +68,19 @@ function Auth() {
                     setAuthorisedUser(true)
 
                     setTimeout(() => {
-
                         if (role === "customer") {
                             navigate("/customer-dashboard")
                         }
                         else if (role === "shop") {
                             navigate("/shop-dashboard")
                         }
-                        else if (role === "delivery") {
-                            navigate("/delivery-dashboard")
-                        }
+
                         else if (role === "admin") {
                             navigate("/admin-dashboard")
                         }
 
                     }, 1000)
                 }
-
             } catch (err) {
                 toast.error(err.response?.data || "Login Failed")
             }
@@ -145,17 +141,16 @@ function Auth() {
 
                 {!isLogin && (
                     <>
-                        <input type="text" placeholder="Name"  value={reqBody.username} onChange={(e) => setReqBody({ ...reqBody, username: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none" />
-                        <select  value={reqBody.role} onChange={(e) => setReqBody({ ...reqBody, role: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"  >
+                        <input type="text" placeholder="Name" value={reqBody.username} onChange={(e) => setReqBody({ ...reqBody, username: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none" />
+                        <select value={reqBody.role} onChange={(e) => setReqBody({ ...reqBody, role: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"  >
                             <option value="customer">Customer</option>
                             <option value="shop">Shop Owner</option>
-                            <option value="delivery">Delivery Agent</option>
                             <option value="admin">Admin</option>
                         </select>
                     </>
                 )}
-                <input type="email" placeholder="Email" value={reqBody.email} onChange={(e) => setReqBody({ ...reqBody, email: e.target.value })}className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none"/>
-                <input type="password" placeholder="Password" value={reqBody.password} onChange={(e) => setReqBody({ ...reqBody, password: e.target.value })}className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-8 outline-none" />
+                <input type="email" placeholder="Email" value={reqBody.email} onChange={(e) => setReqBody({ ...reqBody, email: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-5 outline-none" />
+                <input type="password" placeholder="Password" value={reqBody.password} onChange={(e) => setReqBody({ ...reqBody, password: e.target.value })} className="w-full rounded-2xl border border-[#D8CBB8] bg-white/45 px-6 py-5 mb-8 outline-none" />
 
                 {isLogin ? (
                     <button onClick={handleLogin} className="w-full rounded-2xl bg-[#1A1A1A] text-white py-5 tracking-[4px] text-xs font-bold uppercase hover:bg-[#3F2F24] duration-300"  >    Login
@@ -190,7 +185,7 @@ function Auth() {
 
             </div>
 
-        
+
         </div>
     )
 }

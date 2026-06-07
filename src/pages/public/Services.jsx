@@ -114,9 +114,6 @@ function Services() {
                   </p>
                 </div>
 
-                <button className="bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-[2px] hover:bg-[#3F2F24] duration-300">
-                  Select
-                </button>
 
               </div>
 

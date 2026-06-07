@@ -114,3 +114,15 @@ export const updateCustomerProfileAPI = async(reqBody,reqHeader)=>{
 export const updateCustomerPasswordAPI = async(reqBody,reqHeader)=>{
   return await commonAPI("PUT",`${SERVER_URL}/customer/change-password`,reqBody,reqHeader)
 }
+
+// admin approval shops
+
+export const approveShopAPI = async(id,reqHeader)=>{
+    return await commonAPI("PUT",`${SERVER_URL}/admin/shop/approve/${id}`,{},reqHeader)
+}
+
+// get all shops to admin
+
+export const getAllAdminShopsAPI= async(reqHeader)=>{
+    return await commonAPI("GET",`${SERVER_URL}/admin/shops`,"",reqHeader)
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminSidebar from './AdminSidebar'
-import { getAllShopsAPI } from '../../services/allAPI'
+import { getAllAdminShopsAPI, approveShopAPI } from '../../services/allAPI'
 import { FaStore } from "react-icons/fa"
 import { toast } from 'react-toastify'
 
@@ -9,9 +9,8 @@ function AdminShops() {
   const [shops, setShops] = useState([])
   const [loading, setLoading] = useState(false)
 
-  
-  const getAllShops = async () => {
 
+  const getAllShops = async () => {
     try {
       setLoading(true)
       const token = sessionStorage.getItem("token")
@@ -22,13 +21,12 @@ function AdminShops() {
       const reqHeader = {
         Authorization: `Bearer ${token}`
       }
-      const result = await getAllShopsAPI(reqHeader)
+      const result = await getAllAdminShopsAPI(reqHeader)
       if (result.status === 200) {
         setShops(result.data || [])
       } else {
         toast.error("Failed to fetch shops")
       }
-
     } catch (err) {
       console.log(err)
       toast.error("Server error while fetching shops")
@@ -41,7 +39,24 @@ function AdminShops() {
     getAllShops()
   }, [])
 
- 
+  const handleApprove = async (id) => {
+    try {
+      const token = sessionStorage.getItem("token")
+      const reqHeader = {
+        Authorization: `Bearer ${token}`
+      }
+      const result = await approveShopAPI(id, reqHeader)
+      if (result.status === 200) {
+        toast.success("Shop Approved")
+        getAllShops()
+      }
+    } catch (err) {
+      console.log(err)
+      toast.error("Failed to approve shop")
+    }
+  }
+
+
   return (
     <div className="min-h-screen bg-[#F5F1EB]">
 
@@ -49,7 +64,7 @@ function AdminShops() {
 
       <main className="lg:ml-[260px] px-8 py-8">
 
-      
+
         <div className="mb-8 bg-white border border-[#E6DDD2] rounded-3xl p-7">
 
           <p className="uppercase tracking-[5px] text-xs text-[#7B614D] mb-3">
@@ -66,8 +81,8 @@ function AdminShops() {
 
         </div>
 
-       
-        <div className="bg-white border border-[#E3D7C8] rounded-3xl overflow-hidden">     
+
+        <div className="bg-white border border-[#E3D7C8] rounded-3xl overflow-hidden">
           <div className="px-6 py-5 border-b border-[#E3D7C8] flex items-center gap-3">
             <FaStore className="text-[#3F2F24]" />
             <h2 className="text-2xl font-bold text-[#1A1A1A]">
@@ -75,7 +90,7 @@ function AdminShops() {
             </h2>
           </div>
 
-          
+
           {loading ? (
             <div className="p-10 text-center text-[#6B4F3B]">
               Loading shops...
@@ -95,8 +110,10 @@ function AdminShops() {
                     <th className="px-6 py-4">Shop Name</th>
                     <th className="px-6 py-4">Owner</th>
                     <th className="px-6 py-4">Phone</th>
-                    <th className="px-6 py-4">Location</th>
+                    <th className="px-6 py-4">Area</th>
                     <th className="px-6 py-4">Services</th>
+                    <th className="px-6 py-4">Status</th>
+                    <th className="px-6 py-4">Action</th>
                   </tr>
                 </thead>
 
@@ -120,13 +137,41 @@ function AdminShops() {
                       </td>
 
                       <td className="px-6 py-4">
-                        {item.location}
+                        {item.area}
                       </td>
 
                       <td className="px-6 py-4">
                         {Array.isArray(item.services)
                           ? item.services.join(", ")
                           : item.services}
+                      </td>
+
+                      <td className="px-6 py-4">
+                        <span
+                          className={`px-3 py-1 rounded-full text-sm ${item.status === "approved"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-yellow-100 text-yellow-700"
+                            }`}
+                        >
+                          {item.status}
+                        </span>
+                      </td>
+
+                      <td className="px-6 py-4">
+                        {
+                          item.status === "pending" ? (
+                            <button
+                              onClick={() => handleApprove(item._id)}
+                              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+                            >
+                              Approve
+                            </button>
+                          ) : (
+                            <span className="text-green-600 font-semibold">
+                              Approved
+                            </span>
+                          )
+                        }
                       </td>
 
                     </tr>

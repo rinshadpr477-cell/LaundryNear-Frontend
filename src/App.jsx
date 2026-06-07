@@ -24,14 +24,13 @@ import AdminOrders from "./pages/admin/AdminOrders"
 import AdminShops from "./pages/admin/AdminShops"
 import AdminProfile from "./pages/admin/AdminProfile"
 
-import DeliveryDashboard from "./pages/delivery/DeliveryDashboard"
-import DeliveryOrders from "./pages/delivery/DeliveryOrders"
+
 
 import PageNotFound from "./components/common/PageNotFound"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import ShopProfile from "./pages/shop/ShopProfile"
-import DeliveryProfile from "./pages/delivery/DeliveryProfile"
+
 import PaymentSuccess from "./pages/payment/PaymentSuccess"
 import PaymentFailure from "./pages/payment/PaymentFailure"
 
@@ -83,25 +82,12 @@ function App() {
           </>
         )}
 
-        {role === "delivery" && (
-          <>
-            <Route path="/delivery-dashboard" element={<DeliveryDashboard />} />
-            <Route path="/delivery-orders" element={<DeliveryOrders />} />
-            <Route path="/delivery-profile" element={<DeliveryProfile />} />
-          </>
-        )}
+       
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover={false}
-        draggable
-      />
+      <ToastContainer  position="top-right" autoClose={2000}  hideProgressBar={false} closeOnClick pauseOnHover={false} draggable/>
     </>
   )
 }

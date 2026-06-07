@@ -24,7 +24,7 @@ function Home() {
             <h1 className="text-5xl md:text-7xl xl:text-8xl font-serif leading-[0.95] tracking-tight text-[#1A1A1A]">Clean Clothes.<br />Delivered Fast.</h1>
             <p className="text-[#6B4F3B] mt-8 text-lg md:text-xl leading-9 max-w-xl">Laundry Near connects customers with trusted nearby laundry shops for pickup, washing, ironing and doorstep delivery.</p>
             <div className="flex flex-wrap gap-5 mt-10">
-              <Link to="/services" className="bg-[#F8F4ED] text-[#1A1A1A] px-11 py-4 min-w-[185px] text-xs font-bold tracking-[3px] uppercase border border-[#CBB89B] rounded-full shadow-[0_18px_45px_rgba(63,47,36,0.10)] hover:bg-[#E8DCCB] hover:border-[#B89B72] hover:-translate-y-1 duration-300">Services</Link>
+              {/* <Link to="/services" className="bg-[#F8F4ED] text-[#1A1A1A] px-11 py-4 min-w-[185px] text-xs font-bold tracking-[3px] uppercase border border-[#CBB89B] rounded-full shadow-[0_18px_45px_rgba(63,47,36,0.10)] hover:bg-[#E8DCCB] hover:border-[#B89B72] hover:-translate-y-1 duration-300">Services</Link> */}
               <Link to="/shps" className="bg-[#F8F4ED] text-[#1A1A1A] px-11 py-4 min-w-[185px] text-xs font-bold tracking-[3px] uppercase border border-[#CBB89B] rounded-full shadow-[0_18px_45px_rgba(63,47,36,0.10)] hover:bg-[#E8DCCB] hover:border-[#B89B72] hover:-translate-y-1 duration-300">Explore Shops</Link>
             </div>
           </div>
