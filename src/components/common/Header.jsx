@@ -44,6 +44,32 @@ function Header() {
     navigate("/shps")
   }
 
+  const handleDashboard = () => {
+    if (existingUser?.role === "admin") {
+      navigate("/admin-dashboard")
+    } else if (existingUser?.role === "shop") {
+      navigate("/shop-dashboard")
+    } else {
+      navigate("/customer-dashboard")
+    }
+
+    setProfileOpen(false)
+    setOpen(false)
+  }
+
+  const handleProfile = () => {
+    if (existingUser?.role === "admin") {
+      navigate("/admin-profile")
+    } else if (existingUser?.role === "shop") {
+      navigate("/shop-profile")
+    } else {
+      navigate("/customer-profile")
+    }
+
+    setProfileOpen(false)
+    setOpen(false)
+  }
+
   const handleLogout = () => {
     sessionStorage.clear()
     setRole("")
@@ -70,7 +96,7 @@ function Header() {
           {showSuggestions && suggestions.length > 0 && (
             <div className="absolute top-12 w-full bg-white border rounded-xl shadow-lg">
               {suggestions.map((shop) => (
-                <div key={shop.id}  onMouseDown={() => goToShop(shop.name)}  className="px-4 py-3 hover:bg-[#F5F1EB] cursor-pointer text-sm" >
+                <div key={shop.id} onMouseDown={() => goToShop(shop.name)} className="px-4 py-3 hover:bg-[#F5F1EB] cursor-pointer text-sm" >
                   {highlightText(shop.name, searchKey)}
                 </div>
               ))}
@@ -81,14 +107,14 @@ function Header() {
         <div className="hidden lg:flex items-center gap-4">
           {existingUser ? (
             <div className="relative">
-              <img src={profileImage} onClick={() => setProfileOpen(!profileOpen)} className="w-10 h-10 rounded-full border cursor-pointer"/>
+              <img src={profileImage} onClick={() => setProfileOpen(!profileOpen)} className="w-10 h-10 rounded-full border cursor-pointer" />
 
               {profileOpen && (
                 <div className="absolute right-0 top-12 w-52 bg-white border rounded-xl shadow-lg">
-                  <button onClick={() => navigate("/customer-dashboard")} className="w-full text-left px-4 py-3 hover:bg-[#F5F1EB]">
+                  <button onClick={handleDashboard} className="w-full text-left px-4 py-3 hover:bg-[#F5F1EB]">
                     Dashboard
                   </button>
-                  <button onClick={() => navigate("/customer-profile")} className="w-full text-left px-4 py-3 hover:bg-[#F5F1EB]">
+                  <button onClick={handleProfile} className="w-full text-left px-4 py-3 hover:bg-[#F5F1EB]">
                     Profile
                   </button>
                   <button onClick={handleLogout} className="w-full text-left px-4 py-3 text-red-500">
@@ -104,7 +130,7 @@ function Header() {
           )}
         </div>
 
-        
+
         <div className="lg:hidden">
           {existingUser ? (
             <button onClick={() => setOpen(!open)}>
@@ -119,13 +145,13 @@ function Header() {
 
       </div>
 
-      
+
       {open && existingUser && (
         <div className="lg:hidden bg-white border-t">
-          <button onClick={() => navigate("/customer-dashboard")} className="w-full text-left px-6 py-4 border-b">
+          <button onClick={handleDashboard} className="w-full text-left px-6 py-4 border-b">
             Dashboard
           </button>
-          <button onClick={() => navigate("/customer-profile")} className="w-full text-left px-6 py-4 border-b">
+          <button onClick={handleProfile} className="w-full text-left px-6 py-4 border-b">
             Profile
           </button>
           <button onClick={handleLogout} className="w-full text-left px-6 py-4 text-red-500">

@@ -39,6 +39,10 @@ import PaymentFailure from "./pages/payment/PaymentFailure"
 function App() {
 
   const { role } = useContext(routeGuardContext)
+  const existingUser = JSON.parse(
+    sessionStorage.getItem("existingUser")
+  )
+  const currentRole = role || existingUser?.role
 
   return (
     <>
@@ -53,7 +57,8 @@ function App() {
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
 
-        {role === "customer" && (
+        {/* Customer Routes */}
+        {currentRole === "customer" && (
           <>
             <Route path="/customer-dashboard" element={<CustomerDashboard />} />
             <Route path="/customer/place-order/:shopId" element={<PlaceOrder />} />
@@ -63,16 +68,17 @@ function App() {
           </>
         )}
 
-        {role === "shop" && (
+        {/* Shop Routes */}
+        {currentRole === "shop" && (
           <>
             <Route path="/shop-dashboard" element={<ShopDashboard />} />
             <Route path="/shop-orders" element={<ShopOrders />} />
             <Route path="/shop-profile" element={<ShopProfile />} />
-
           </>
         )}
 
-        {role === "admin" && (
+        {/* Admin Routes */}
+        {currentRole === "admin" && (
           <>
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             <Route path="/admin-users" element={<AdminUsers />} />
@@ -82,12 +88,17 @@ function App() {
           </>
         )}
 
-       
-
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
-      <ToastContainer  position="top-right" autoClose={2000}  hideProgressBar={false} closeOnClick pauseOnHover={false} draggable/>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover={false}
+        draggable
+      />
     </>
   )
 }
