@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FaBell } from 'react-icons/fa'
+
 import { IoMenu, IoClose } from 'react-icons/io5'
 import { routeGuardContext } from '../../context/AuthContext'
 import { searchKeyContext } from '../../context/ContextShare'
@@ -57,12 +57,7 @@ function DashboardHeader({ title, showSearch = false }) {
         )}
 
         <div className="hidden lg:flex items-center gap-5">
-          <button className="relative w-11 h-11 rounded-full bg-white border border-[#E3D7C8] flex items-center justify-center">
-            <FaBell />
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">
-              0
-            </span>
-          </button>
+         
 
           <div className="relative">
             <button onClick={() => setProfileOpen(!profileOpen)} className="flex items-center gap-3">
