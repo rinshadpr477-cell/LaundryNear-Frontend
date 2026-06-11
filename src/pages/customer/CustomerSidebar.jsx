@@ -10,7 +10,7 @@ function CustomerSidebar() {
   const menuItems = [
     { name: "Dashboard", path: "/customer-dashboard", icon: <MdDashboard /> },
     { name: "My Orders", path: "/my-orders", icon: <FaBoxOpen /> },
-    { name: "Shops", path: "/shops", icon: <RiStore2Fill /> },
+    { name: "Shops", path: "/shps", icon: <RiStore2Fill /> },
     { name: "Profile", path: "/customer-profile", icon: <FaUser /> },
     { name: "Home", path: "/", icon: <FaHome /> }
   ]
